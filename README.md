@@ -18,8 +18,15 @@ The service will query mongoDB everytime a GET request is received, since the da
 
 ## Improvements
 + For increasing size of URL list
+  - Use multiple databases to store URL data, use hash map to map URL into database evenly
+  - Apply Apache Spark kind of techniques (e.g. MapReduce), to handle large data size
 + For excessive request 
+  - Utilize load balancing solution to keep server running
+  - Keep each request is responded in a fairly time (e.g. 3s), and process each request queue accordingly
+  - Introduce extra server
 + For continuous URL update
+  - Decide what to prioritize: Integrity or Availability
+  - For average 5000 updates a day, create a separate table store update data and update several times a day
 
 ## Roadmap
 - [x] Initial Design 
@@ -28,5 +35,5 @@ The service will query mongoDB everytime a GET request is received, since the da
 - [x] Implement Request/Response feature
 - [x] Implement Database operation (SELECT)
 - [x] Unit Test
-- [ ] Improvements: discussed here
-- [ ] Documentation
+- [x] Improvements: discussed here
+- [x] Documentation
