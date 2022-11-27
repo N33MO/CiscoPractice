@@ -7,8 +7,16 @@ import pymongo
 import logging
 logging.basicConfig(filename=constants.Constants.LOG_FILE, encoding='utf-8', level=logging.DEBUG, format='%(asctime)s %(levelname)s:%(message)s')
 
+"""
+    This is the Malware URL lookup service
+    This is a blocking run, this service will keep active until closed
+    input: GET Request with specific pattern from http proxy
+    output: JSON data contains two pieces of bool info (True/False/None)
+"""
 class MyServer(BaseHTTPRequestHandler):
     # basic HTTP GET request listener
+    # directly talk with HTTP Proxy receiving GET request and 
+    # respond with HTML wrapped JSON string
     def do_GET(self):
         isValid = self.verifyProxyRequest(self.path)
         
@@ -33,6 +41,8 @@ class MyServer(BaseHTTPRequestHandler):
         logging.debug(f"Respond with json: {json_data}")
 
     # verify GET request pattern
+    # input: original str path from internal do_GET method
+    # output: bool (True/False) tells if request is in valid format
     def verifyProxyRequest(self, str) -> bool:
         if (len(str) <= len(constants.Constants.REQ_PREFIX)):
             logging.debug(f"Invalid request: {str}")
@@ -43,6 +53,10 @@ class MyServer(BaseHTTPRequestHandler):
         return False
     
     # verify malware URL
+    # This method will query database everytime being called, it looks
+    # into database collection and find if there's a match of the string
+    # input: parsed string value contains string URL with query string
+    # output: bool (True/False) tells if URL contains malware resources
     def verifyURLwithQueryStr(self, str) -> bool:
         try:
             collection = dbConnector.dbConnector.getDBCollection(self)

@@ -2,6 +2,8 @@
 class Constants():
     # Database Connection
     MONGO_CLIENT = 'mongodb://localhost:27017/'
+    DB = 'CiscoPractice'
+    COLLECTION = 'testCollection'
     MAX_RECONNECT_ATTEMPTS = 3
 
     # HTTP Server

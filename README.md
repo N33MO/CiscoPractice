@@ -16,12 +16,17 @@ The response will in json format, contains two pieces of info:
 ```
 The service will query mongoDB everytime a GET request is received, since the database only keeps urls contain malware resources, it will return a non-empty value when it is a malware link saved in database
 
+## Improvements
++ For increasing size of URL list
++ For excessive request 
++ For continuous URL update
+
 ## Roadmap
 - [x] Initial Design 
 - [x] POC: Connection between HTTP proxy and service
 - [x] POC: Create Database and Connection between service and DB
 - [x] Implement Request/Response feature
 - [x] Implement Database operation (SELECT)
-- [ ] Unit Test
-- [ ] Improvements
+- [x] Unit Test
+- [ ] Improvements: discussed here
 - [ ] Documentation

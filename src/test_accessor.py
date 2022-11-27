@@ -1,7 +1,7 @@
 import accessor
 import unittest
 
-class TestVerifyProxyRequest(unittest.TestCase):
+class TestAccessor(unittest.TestCase):
 
     def test_invalid_request(self):
         req1 = "/v1/urlinfo3/www.fakelink.com"
