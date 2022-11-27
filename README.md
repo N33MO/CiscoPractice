@@ -14,13 +14,14 @@ The response will in json format, contains two pieces of info:
     "isMalware": True/False     # if the request resources contain malware
 }
 ```
+The service will query mongoDB everytime a GET request is received, since the database only keeps urls contain malware resources, it will return a non-empty value when it is a malware link saved in database
 
 ## Roadmap
 - [x] Initial Design 
 - [x] POC: Connection between HTTP proxy and service
 - [x] POC: Create Database and Connection between service and DB
 - [x] Implement Request/Response feature
-- [ ] Implement Database operation (SELECT)
+- [x] Implement Database operation (SELECT)
 - [ ] Unit Test
 - [ ] Improvements
 - [ ] Documentation
