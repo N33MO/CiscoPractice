@@ -4,7 +4,7 @@ This project implement a Malware URL lookup service. This service can help a HTT
 ## Roadmap
 - [x] Initial Design 
 - [x] POC: Connection between HTTP proxy and service
-- [ ] POC: Create Database and Connection between service and DB
+- [x] POC: Create Database and Connection between service and DB
 - [ ] Implement Request/Response feature
 - [ ] Implement Database operation (SELECT)
 - [ ] Unit Test
