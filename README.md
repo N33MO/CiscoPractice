@@ -3,6 +3,15 @@
 This project implement a Malware URL lookup service. This service can help a HTTP proxy to decide if the HTTP connection is requesting harmful resources.
 
 ## Usage
+To use the service:
+1. Prerequisite: Availlable MongoDB service, e.g. client ```'mongodb://localhost:27017/'```
+2. start a sample HTTP server by running ```python -m http.server```
+3. start the service from accessor.py by running ```python accessor.py```
+4. send GET request from a web browser or postman
+    In web browser type ```http://localhost:8080/v1/urlinfo/www.malware1.com```
+    In postman use ```GET``` with url ```http://localhost:8080/v1/urlinfo/www.malware2.com```
+    The return data will look like this ```{"isValid": true, "isMalware": false}```
+
 A proxy sends a GET request to the service like below:
 ```
 GET /v1/urlinfo/{resource_url_with_query_string}
